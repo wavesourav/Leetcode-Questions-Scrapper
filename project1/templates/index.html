@@ -1,21 +1,116 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Search Page</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <div class="form">
-      <form method="POST">
+<head>
+  <title>Search Page</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Existing styles */
+
+    /* New styles */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .form {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    form {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    label {
+      font-weight: bold;
+      margin-right: 10px;
+    }
+
+    input[type="text"] {
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 16px;
+      transition: border-color 0.3s ease-in-out;
+    }
+
+    input[type="text"]:focus {
+      border-color: #0066cc;
+      box-shadow: 0 0 3px rgba(0, 102, 204, 0.5);
+    }
+
+    input[type="submit"] {
+      padding: 8px 15px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s ease-in-out;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #45a049;
+    }
+
+    div.results {
+      background-color: #fff;
+      padding: 10px;
+      border-radius: 4px;
+      text-align: center;
+    }
+
+    div.results a {
+      text-decoration: none;
+      color: #0066cc;
+      display: block;
+      margin-bottom: 10px;
+      transition: color 0.3s ease-in-out;
+    }
+
+    div.results a:hover {
+      color: #003399;
+      transform: scale(1.05);
+    }
+
+    div.results p {
+      margin: 0;
+      font-size: 14px;
+      color: #777;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 24px;
+      margin-bottom: 30px;
+      color: #333;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      transition: text-shadow 0.3s ease-in-out;
+    }
+
+    h1:hover {
+      text-shadow: 4px 4px 6px rgba(0, 0, 0, 0.5);
+    }
+  </style>
+</head>
+<body>
+  <h1>LEETCODE SEARCH ENGINE</h1>
+  <div class="form">
+    <form method="POST">
         {{ form.hidden_tag() }} {{ form.search.label }} {{ form.search() }} {{
         form.submit() }}
-      </form>
-    </div>
-    <div>
-      {% for result in results %}
-      <a href="{{ result['Question Link'] }}">{{ result['Question Link'] }}</a>
-      <p>Score: {{ result['Score'] }}</p>
-      {% endfor %}
-    </div>
-  </body>
+    </form>
+  </div>
+  <div class="results">
+    {% for result in results %}
+    <a href="{{ result['Question Link'] }}">{{ result['Question Link'] }}</a>
+    <p>Score: {{ result['Score'] }}</p>
+    {% endfor %}
+  </div>
+</body>
 </html>
